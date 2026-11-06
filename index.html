@@ -7,6 +7,61 @@
   <title>V POHYBU | Sport, zážitky a dobrodružství</title>
   <meta name="description" content="Příměstské tábory, lyžařská škola, jednodenní akce a výlety a půjčovna paddleboardů.">
 
+  
+/* Nadpisy všech čtyř karet nahoře */
+.choice {
+  align-items: flex-start;
+}
+
+/* Text v horní části */
+.choice .choice-content {
+  text-align: left;
+  padding: 24px;
+}
+
+/* Přechod nahoře místo dole */
+.choice::before {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(8, 24, 39, 0.78) 0%,
+      rgba(8, 24, 39, 0.35) 24%,
+      rgba(8, 24, 39, 0) 53%
+    ),
+    var(--photo);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Jemné individuální nastavení fotografií */
+.choice:nth-child(1)::before {
+  background-position: center 45%;
+}
+
+.choice:nth-child(2)::before {
+  background-position: center 35%;
+}
+
+.choice:nth-child(3)::before {
+  background-position: center 40%;
+}
+
+.choice:nth-child(4)::before {
+  background-position: center 55%;
+}
+
+/* Mobilní zobrazení */
+@media (max-width: 760px) {
+  .choice .choice-content {
+    padding: 12px;
+  }
+
+  .choice h2 {
+    font-size: clamp(14px, 3.8vw, 22px);
+  }
+}
+
+  
   <style>
     :root {
       --navy: #173a54;
