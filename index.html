@@ -4,64 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>V POHYBU | Sport, zážitky a dobrodružství</title>
+
   <meta name="description" content="Příměstské tábory, lyžařská škola, jednodenní akce a výlety a půjčovna paddleboardů.">
 
-  
-/* Nadpisy všech čtyř karet nahoře */
-.choice {
-  align-items: flex-start;
-}
-
-/* Text v horní části */
-.choice .choice-content {
-  text-align: left;
-  padding: 24px;
-}
-
-/* Přechod nahoře místo dole */
-.choice::before {
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(8, 24, 39, 0.78) 0%,
-      rgba(8, 24, 39, 0.35) 24%,
-      rgba(8, 24, 39, 0) 53%
-    ),
-    var(--photo);
-  background-size: cover;
-  background-position: center;
-}
-
-/* Jemné individuální nastavení fotografií */
-.choice:nth-child(1)::before {
-  background-position: center 45%;
-}
-
-.choice:nth-child(2)::before {
-  background-position: center 35%;
-}
-
-.choice:nth-child(3)::before {
-  background-position: center 40%;
-}
-
-.choice:nth-child(4)::before {
-  background-position: center 55%;
-}
-
-/* Mobilní zobrazení */
-@media (max-width: 760px) {
-  .choice .choice-content {
-    padding: 12px;
-  }
-
-  .choice h2 {
-    font-size: clamp(14px, 3.8vw, 22px);
-  }
-}
-
-  
   <style>
     :root {
       --navy: #173a54;
@@ -69,7 +16,9 @@
       --paper: #f5f7f6;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -79,7 +28,7 @@
     }
 
     .page {
-      max-width: 1500px;
+      max-width: 1900px;
       min-height: 100vh;
       min-height: 100dvh;
       margin: auto;
@@ -95,15 +44,18 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(30px, 4vw, 58px);
+      font-size: clamp(26px, 4vw, 72px);
       letter-spacing: 0.08em;
+      line-height: 1.15;
     }
 
     header p {
-      margin: 5px 0 0;
-      font-size: clamp(11px, 1.2vw, 16px);
+      margin: 8px 0 0;
+      font-size: clamp(11px, 1.2vw, 20px);
       letter-spacing: 0.12em;
     }
+
+    /* ČTYŘI HLAVNÍ KARTY */
 
     .choices {
       display: grid;
@@ -116,102 +68,97 @@
     .choice {
       position: relative;
       display: flex;
-      align-items: flex-end;
+      align-items: flex-start;
       min-width: 0;
       overflow: hidden;
       border-radius: 18px;
       color: white;
       text-decoration: none;
-      background: #315b6b;
+      background-color: #315b6b;
       box-shadow: 0 5px 18px #14394e24;
-      transition: transform 0.2s;
+      transition: transform 0.2s ease;
     }
 
     .choice:hover {
       transform: translateY(-4px);
     }
 
+    /* FOTOGRAFIE A JEMNÉ ZTMAVENÍ NAHOŘE */
+
     .choice::before {
       content: "";
       position: absolute;
       inset: 0;
-      background:
+
+      background-image:
         linear-gradient(
-          to top,
-          rgba(8,24,39,0.88),
-          rgba(8,24,39,0.05) 75%
+          to bottom,
+          rgba(8, 24, 39, 0.67) 0%,
+          rgba(8, 24, 39, 0.26) 20%,
+          rgba(8, 24, 39, 0) 48%
         ),
         var(--photo);
+
       background-size: cover;
-      background-position: center;
+      background-repeat: no-repeat;
+      background-position: var(--position, center center);
+
+      transition: transform 0.3s ease;
     }
 
-   .choice:nth-child(1) {
-  --photo: url('primestak.png');
-}
+    .choice:hover::before {
+      transform: scale(1.025);
+    }
 
-.choice:nth-child(2) {
-  --photo: url('skola.png');
-}
+    /* JEDNOTLIVÉ FOTOGRAFIE */
 
-.choice:nth-child(3) {
-  --photo: url('akce.png');
-}
+    .choice:nth-child(1) {
+      --photo: url('primestak.png');
+      --position: center 45%;
+    }
 
-.choice:nth-child(4) {
-  --photo: url('paddleboardy.png');
-}
+    .choice:nth-child(2) {
+      --photo: url('skola.png');
+      --position: center 35%;
+    }
 
-    /* Jemné posuny fotek uvnitř karet */
-.choice:nth-child(1)::before {
-  background-position: center 42%;
-}
+    .choice:nth-child(3) {
+      --photo: url('akce.png');
+      --position: center 40%;
+    }
 
-.choice:nth-child(2)::before {
-  background-position: center 22%;
-}
+    .choice:nth-child(4) {
+      --photo: url('paddleboardy.png');
+      --position: center 55%;
+    }
 
-.choice:nth-child(3)::before {
-  background-position: center 35%;
-}
-
-.choice:nth-child(4)::before {
-  background-position: center 38%;
-}
-
-/* Lyžařská škola – text dáme doprava, aby neležel přes obličej */
-.choice:nth-child(2) .choice-content {
-  text-align: right;
-}
-
-/* Paddleboardy – text dáme nahoru, aby nezakrýval paddleboardy dole */
-.choice:nth-child(4) {
-  align-items: flex-start;
-}
-
-.choice:nth-child(4) .choice-content {
-  padding-top: 22px;
-}
+    /* NADPISY NAHOŘE */
 
     .choice-content {
       position: relative;
-      padding: clamp(10px, 1.6vw, 24px);
+      z-index: 1;
       width: 100%;
+      padding: clamp(12px, 1.6vw, 26px);
+      text-align: left;
     }
 
     .choice h2 {
       margin: 0;
-      font-size: clamp(17px, 2vw, 28px);
+      font-size: clamp(17px, 2vw, 30px);
       line-height: 1.2;
+      text-shadow: 0 2px 9px rgba(0,0,0,0.25);
     }
 
     .choice span {
       display: block;
+      margin-top: 12px;
       color: #ffd1ad;
-      margin-top: 10px;
       font-size: 13px;
       font-weight: bold;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.25);
     }
+
+    /* PROPAGACE HARRADISE */
 
     .harradise {
       display: flex;
@@ -226,7 +173,7 @@
     }
 
     .harradise strong {
-      font-size: clamp(13px, 1.6vw, 20px);
+      font-size: clamp(13px, 1.6vw, 22px);
     }
 
     .harradise small {
@@ -241,21 +188,39 @@
       white-space: nowrap;
     }
 
+    .harradise:hover {
+      background: #d9e5e2;
+    }
+
     footer {
       text-align: center;
       font-size: 11px;
       color: #5c7382;
     }
 
+    /* MOBILNÍ ZOBRAZENÍ */
+
     @media (max-width: 760px) {
+
       .page {
         padding: 10px;
         gap: 9px;
       }
 
+      h1 {
+        font-size: clamp(19px, 5vw, 34px);
+        letter-spacing: 0.035em;
+      }
+
+      header p {
+        font-size: clamp(9px, 2.3vw, 13px);
+        letter-spacing: 0.04em;
+      }
+
       .choices {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: repeat(2, minmax(0, 1fr));
+        gap: 9px;
         min-height: 0;
       }
 
@@ -263,21 +228,22 @@
         border-radius: 13px;
       }
 
+      .choice-content {
+        padding: 12px;
+      }
+
       .choice h2 {
         font-size: clamp(14px, 3.8vw, 22px);
       }
 
-      .choice-content {
-        padding: 10px;
-      }
-
       .choice span {
         font-size: 10px;
-        margin-top: 5px;
+        margin-top: 7px;
       }
 
       .harradise {
         padding: 10px;
+        gap: 8px;
       }
 
       .harradise strong {
@@ -293,41 +259,46 @@
       }
     }
 
+    /* NIŽŠÍ OBRAZOVKY */
+
     @media (max-height: 610px) {
+
       .page {
         gap: 6px;
         padding: 7px;
       }
 
       h1 {
-        font-size: 28px;
+        font-size: clamp(19px, 3vw, 34px);
       }
 
       header p {
-        margin-top: 1px;
+        margin-top: 2px;
       }
 
       .choice-content {
-        padding: 8px;
+        padding: 10px;
       }
 
       .harradise {
-        padding: 6px 10px;
+        padding: 7px 12px;
       }
 
       footer {
         display: none;
       }
     }
+
   </style>
 </head>
 
 <body>
+
   <main class="page">
 
     <header>
       <h1>V POHYBU, ALE HLAVNĚ V POHODĚ</h1>
-      <p>SPORT · RESPEKT· ZÁŽITKY · DOBRODRUŽSTVÍ</p>
+      <p>SPORT · RESPEKT · ZÁŽITKY · DOBRODRUŽSTVÍ</p>
     </header>
 
     <nav class="choices" aria-label="Naše aktivity">
@@ -373,10 +344,12 @@
       </div>
 
       <span class="action">Harradise.cz →</span>
+
     </a>
 
     <footer>vpohybu.fun</footer>
 
   </main>
+
 </body>
 </html>
