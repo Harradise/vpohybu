@@ -107,6 +107,37 @@
   --photo: url('paddleboardy.png');
 }
 
+    /* Jemné posuny fotek uvnitř karet */
+.choice:nth-child(1)::before {
+  background-position: center 42%;
+}
+
+.choice:nth-child(2)::before {
+  background-position: center 22%;
+}
+
+.choice:nth-child(3)::before {
+  background-position: center 35%;
+}
+
+.choice:nth-child(4)::before {
+  background-position: center 38%;
+}
+
+/* Lyžařská škola – text dáme doprava, aby neležel přes obličej */
+.choice:nth-child(2) .choice-content {
+  text-align: right;
+}
+
+/* Paddleboardy – text dáme nahoru, aby nezakrýval paddleboardy dole */
+.choice:nth-child(4) {
+  align-items: flex-start;
+}
+
+.choice:nth-child(4) .choice-content {
+  padding-top: 22px;
+}
+
     .choice-content {
       position: relative;
       padding: clamp(10px, 1.6vw, 24px);
