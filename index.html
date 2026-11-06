@@ -99,7 +99,7 @@
         ),
         var(--photo);
 
-      background-size: cover;
+     background-size: var(--size, cover);
       background-repeat: no-repeat;
       background-position: var(--position, center center);
 
@@ -112,10 +112,11 @@
 
     /* JEDNOTLIVÉ FOTOGRAFIE */
 
-    .choice:nth-child(1) {
-      --photo: url('primestak.png');
-      --position: center 45%;
-    }
+   .choice:nth-child(1) {
+  --photo: url('primestak.png');
+  --position: 42% 58%;
+  --size: 170%;
+}
 
     .choice:nth-child(2) {
       --photo: url('skola.png');
