@@ -6,296 +6,647 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>V POHYBU | Sport, zážitky a dobrodružství</title>
-
   <meta name="description" content="Příměstské tábory, lyžařská škola, jednodenní akce a výlety a půjčovna paddleboardů.">
 
   <style>
     :root {
       --navy: #173a54;
+      --blue: #779aad;
       --orange: #ed8c3a;
-      --paper: #f5f7f6;
+      --green: #8cb5a8;
+      --cream: #fbf3e9;
+      --ink-soft: #607a88;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--paper);
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
       color: var(--navy);
+
+      background:
+        radial-gradient(
+          ellipse at 4% 4%,
+          rgba(151, 205, 191, 0.27),
+          transparent 43%
+        ),
+        radial-gradient(
+          ellipse at 100% 100%,
+          rgba(240, 190, 137, 0.22),
+          transparent 45%
+        ),
+        linear-gradient(
+          135deg,
+          #edf5f1 0%,
+          #f7f8f5 48%,
+          #fcf2e7 100%
+        );
+    }
+
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 3px;
     }
 
     .page {
+      width: 100%;
       max-width: 1900px;
       min-height: 100vh;
       min-height: 100dvh;
-      margin: auto;
-      padding: clamp(10px, 2vw, 28px);
+      margin: 0 auto;
+      padding: 15px clamp(12px, 2vw, 32px) 12px;
+
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 15px;
     }
 
-    header {
+    /* HORNÍ NAVIGACE */
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+
+      padding: 8px 12px 12px;
+      border-bottom: 1px solid rgba(23, 58, 84, 0.11);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .brand-symbol {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+
+      border-radius: 11px;
+      background: var(--navy);
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(23, 58, 84, 0.13);
+    }
+
+    .brand-name {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.065em;
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 2.5vw, 34px);
+    }
+
+    .topnav a {
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .topnav a:hover {
+      color: #bf6b2b;
+    }
+
+    .topnav .nav-highlight {
+      color: #ad6025;
+      border: 1px solid rgba(173, 96, 37, 0.24);
+      border-radius: 30px;
+      padding: 9px 15px;
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    /* ÚVODNÍ NADPIS */
+
+    .hero {
       text-align: center;
+      padding: clamp(8px, 1.8vh, 22px) 6px 5px;
     }
-h1 {
-  margin: 0;
-  color: #173a54;
-  font-size: clamp(26px, 4vw, 72px);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1.15;
-}
-    
-h1 .motto {
-  color: #779aad;
-  font-weight: inherit;
-  letter-spacing: inherit;
-}
+
+    .hero h1 {
       margin: 0;
-      font-size: clamp(26px, 4vw, 72px);
-      letter-spacing: 0.08em;
-      line-height: 1.15;
+      font-size: clamp(27px, 3.35vw, 60px);
+      font-weight: 800;
+      line-height: 1.17;
+      letter-spacing: 0.035em;
+      color: var(--navy);
+      text-wrap: balance;
     }
 
-    header p {
-      margin: 8px 0 0;
-      font-size: clamp(11px, 1.2vw, 20px);
-      letter-spacing: 0.12em;
+    .hero h1 .motto {
+      color: var(--blue);
+      font-weight: inherit;
     }
 
-    /* ČTYŘI HLAVNÍ KARTY */
+    .hero p {
+      max-width: 1080px;
+      margin: 13px auto 0;
+
+      font-size: clamp(12px, 1.06vw, 17px);
+      line-height: 1.55;
+      color: #466577;
+    }
+
+    .hero-accent {
+      display: block;
+      width: 60px;
+      height: 3px;
+      margin: 16px auto 0;
+      border-radius: 5px;
+
+      background: linear-gradient(
+        90deg,
+        var(--green),
+        var(--orange)
+      );
+    }
+
+    /* FOTOGRAFICKÉ KARTY */
 
     .choices {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
+      gap: clamp(10px, 1.2vw, 19px);
       flex: 1;
-      min-height: 260px;
+      min-height: 340px;
     }
 
     .choice {
       position: relative;
       display: flex;
       align-items: flex-start;
+
       min-width: 0;
       overflow: hidden;
-      border-radius: 18px;
+      isolation: isolate;
+
+      border-radius: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.85);
       color: white;
       text-decoration: none;
-      background-color: #315b6b;
-      box-shadow: 0 5px 18px #14394e24;
-      transition: transform 0.2s ease;
+      background: #315b6b;
+
+      box-shadow:
+        0 11px 30px rgba(30, 69, 79, 0.12),
+        0 2px 6px rgba(30, 69, 79, 0.04);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
     }
 
     .choice:hover {
-      transform: translateY(-4px);
+      transform: translateY(-5px);
+      box-shadow:
+        0 17px 35px rgba(30, 69, 79, 0.20);
     }
-
-    /* FOTOGRAFIE A JEMNÉ ZTMAVENÍ NAHOŘE */
 
     .choice::before {
       content: "";
       position: absolute;
       inset: 0;
+      z-index: -1;
 
       background-image:
         linear-gradient(
           to bottom,
-          rgba(8, 24, 39, 0.67) 0%,
-          rgba(8, 24, 39, 0.26) 20%,
-          rgba(8, 24, 39, 0) 48%
+          rgba(9, 30, 45, 0.74) 0%,
+          rgba(9, 30, 45, 0.39) 20%,
+          rgba(9, 30, 45, 0.04) 52%,
+          transparent 75%
         ),
         var(--photo);
 
-     background-size: var(--size, cover);
+      background-size: var(--size, cover);
+      background-position: var(--position, center);
       background-repeat: no-repeat;
-      background-position: var(--position, center center);
 
-      transition: transform 0.3s ease;
+      transition: transform 0.45s ease;
     }
 
     .choice:hover::before {
       transform: scale(1.025);
     }
 
-    /* JEDNOTLIVÉ FOTOGRAFIE */
+    /* FOTOGRAFIE - PŮVODNÍ NASTAVENÍ */
 
-   .choice:nth-child(1) {
-  --photo: url('primestak.png');
-  --position: 62% 58%;
-  --size: 145%;
-}
+    .choice:nth-child(1) {
+      --photo: url('primestak.png');
+      --position: 62% 58%;
+      --size: 145%;
+    }
 
-.choice:nth-child(2) {
-  --photo: url('skola.png');
-  --position: center 35%;
-  --size: cover;
-}
+    .choice:nth-child(2) {
+      --photo: url('skola.png');
+      --position: center 35%;
+      --size: cover;
+    }
 
     .choice:nth-child(3) {
       --photo: url('akce.png');
       --position: center 40%;
+      --size: cover;
     }
 
     .choice:nth-child(4) {
       --photo: url('paddleboardy.png');
       --position: center 55%;
+      --size: cover;
     }
 
-    /* NADPISY NAHOŘE */
+    /* TEXTY NA KARTÁCH */
 
     .choice-content {
       position: relative;
       z-index: 1;
       width: 100%;
-      padding: clamp(12px, 1.6vw, 26px);
-      text-align: left;
+      padding: clamp(15px, 1.65vw, 27px);
     }
 
     .choice h2 {
       margin: 0;
-      font-size: clamp(17px, 2vw, 30px);
+      font-size: clamp(19px, 1.8vw, 29px);
+      font-weight: 800;
       line-height: 1.2;
-      text-shadow: 0 2px 9px rgba(0,0,0,0.25);
+      color: white;
+      text-shadow: 0 2px 9px rgba(0, 0, 0, 0.25);
     }
 
-    .choice span {
+    .choice .details {
       display: block;
-      margin-top: 12px;
+      margin-top: 13px;
+      max-width: 100%;
+
+      font-size: clamp(11px, 0.8vw, 13px);
+      line-height: 1.5;
+      font-weight: 700;
       color: #ffd1ad;
-      font-size: 13px;
-      font-weight: bold;
-      text-shadow: 0 1px 5px rgba(0,0,0,0.25);
+
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
     }
 
-    /* PROPAGACE HARRADISE */
+    /* MALÁ ORANŽOVÁ ŠIPKA */
+
+    .choice-arrow {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      z-index: 1;
+
+      width: 38px;
+      height: 38px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.91);
+      color: #bb6b2e;
+
+      font-size: 21px;
+      font-weight: bold;
+
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.13);
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .choice:hover .choice-arrow {
+      background: #f5a15f;
+      color: white;
+      transform: translateX(3px);
+    }
+
+    /* HARRADISE */
 
     .harradise {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 15px;
-      padding: 15px 22px;
-      border-radius: 14px;
-      background: #e5ecea;
+      gap: 18px;
+
+      padding: 12px 20px 12px 14px;
+      border: 1px solid rgba(117, 160, 160, 0.24);
+      border-radius: 17px;
+
+      background: rgba(255, 255, 255, 0.65);
       color: var(--navy);
       text-decoration: none;
-    }
 
-    .harradise strong {
-      font-size: clamp(13px, 1.6vw, 22px);
-    }
-
-    .harradise small {
-      display: block;
-      margin-top: 4px;
-      color: #5c7382;
-    }
-
-    .harradise .action {
-      color: #b75c19;
-      font-weight: bold;
-      white-space: nowrap;
+      box-shadow: 0 5px 18px rgba(30, 69, 79, 0.045);
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
     }
 
     .harradise:hover {
-      background: #d9e5e2;
+      background: rgba(255, 255, 255, 0.95);
+      transform: translateY(-2px);
     }
+
+    .harradise-main {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .harradise-image {
+      width: 72px;
+      height: 58px;
+      flex-shrink: 0;
+      overflow: hidden;
+      border-radius: 11px;
+
+      background:
+        linear-gradient(
+          155deg,
+          #c5e2e4 0%,
+          #e8f0ec 52%,
+          #c0d6d0 100%
+        );
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .harradise-image svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .harradise-text strong {
+      display: block;
+      font-size: clamp(14px, 1.15vw, 19px);
+      line-height: 1.3;
+    }
+
+    .harradise-text small {
+      display: block;
+      margin-top: 5px;
+
+      font-size: clamp(11px, 0.85vw, 13px);
+      color: var(--ink-soft);
+      line-height: 1.35;
+    }
+
+    .harradise-action {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+
+      color: #ad6025;
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .harradise-action .arrow {
+      font-size: 22px;
+    }
+
+    /* PATIČKA */
 
     footer {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       font-size: 11px;
-      color: #5c7382;
+      color: #6b8795;
+      letter-spacing: 0.04em;
+      padding: 0 0 3px;
     }
 
-    /* MOBILNÍ ZOBRAZENÍ */
+    /* MENŠÍ NOTEBOOKY */
+
+    @media (max-width: 1100px) {
+      .hero h1 {
+        font-size: clamp(25px, 3.1vw, 38px);
+      }
+
+      .choice h2 {
+        font-size: clamp(17px, 2vw, 24px);
+      }
+
+      .choice-content {
+        padding: 15px;
+      }
+
+      .choice .details {
+        font-size: 11px;
+      }
+    }
+
+    /* MOBILY */
 
     @media (max-width: 760px) {
 
       .page {
-        padding: 10px;
+        padding: 9px;
         gap: 9px;
       }
 
-      h1 {
-        font-size: clamp(19px, 5vw, 34px);
-        letter-spacing: 0.035em;
+      .topbar {
+        padding: 5px 4px 8px;
       }
 
-      header p {
-        font-size: clamp(9px, 2.3vw, 13px);
-        letter-spacing: 0.04em;
+      .brand-symbol {
+        width: 29px;
+        height: 29px;
+        border-radius: 9px;
+        font-size: 16px;
+      }
+
+      .brand {
+        gap: 7px;
+      }
+
+      .brand-name {
+        font-size: 12px;
+      }
+
+      .topnav {
+        gap: 9px;
+      }
+
+      .topnav a {
+        font-size: 10px;
+      }
+
+      .topnav .nav-highlight {
+        padding: 7px 9px;
+      }
+
+      .hero {
+        padding: 6px 2px 4px;
+      }
+
+      .hero h1 {
+        font-size: clamp(19px, 4.9vw, 32px);
+        line-height: 1.16;
+        letter-spacing: 0.015em;
+      }
+
+      .hero p {
+        margin-top: 7px;
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .hero-accent {
+        width: 42px;
+        height: 2px;
+        margin-top: 9px;
       }
 
       .choices {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: repeat(2, minmax(0, 1fr));
-        gap: 9px;
-        min-height: 0;
+        gap: 8px;
+        min-height: 40svh;
       }
 
       .choice {
-        border-radius: 13px;
+        border-radius: 14px;
+        border-width: 2px;
       }
 
       .choice-content {
-        padding: 12px;
+        padding: 11px;
       }
 
       .choice h2 {
-        font-size: clamp(14px, 3.8vw, 22px);
+        font-size: clamp(14px, 3.7vw, 21px);
+        line-height: 1.17;
       }
 
-      .choice span {
-        font-size: 10px;
+      .choice .details {
         margin-top: 7px;
+        font-size: clamp(9px, 2.3vw, 11px);
+        line-height: 1.4;
+      }
+
+      .choice-arrow {
+        width: 27px;
+        height: 27px;
+        right: 9px;
+        bottom: 9px;
+        font-size: 16px;
       }
 
       .harradise {
-        padding: 10px;
+        padding: 9px;
         gap: 8px;
       }
 
-      .harradise strong {
-        font-size: 12px;
+      .harradise-main {
+        gap: 9px;
       }
 
-      .harradise small {
-        font-size: 10px;
+      .harradise-image {
+        width: 44px;
+        height: 46px;
+        border-radius: 8px;
       }
 
-      .harradise .action {
+      .harradise-text strong {
         font-size: 11px;
+        line-height: 1.25;
+      }
+
+      .harradise-text small {
+        font-size: 10px;
+        margin-top: 3px;
+      }
+
+      .harradise-action {
+        font-size: 0;
+        gap: 0;
+      }
+
+      .harradise-action .arrow {
+        font-size: 23px;
+      }
+
+      footer {
+        font-size: 10px;
       }
     }
 
-    /* NIŽŠÍ OBRAZOVKY */
+    /* EXTRA MALÉ MOBILY */
 
-    @media (max-height: 610px) {
-
-      .page {
-        gap: 6px;
-        padding: 7px;
+    @media (max-width: 380px) {
+      .hero h1 {
+        font-size: 18px;
       }
 
-      h1 {
-        font-size: clamp(19px, 3vw, 34px);
+      .choice h2 {
+        font-size: 14px;
       }
 
-      header p {
-        margin-top: 2px;
+      .choice .details {
+        font-size: 9px;
       }
 
       .choice-content {
-        padding: 10px;
+        padding: 9px;
+      }
+    }
+
+    /* NÍZKÉ OBRAZOVKY */
+
+    @media (max-height: 650px) {
+      .page {
+        gap: 7px;
+      }
+
+      .hero {
+        padding: 3px 0;
+      }
+
+      .hero-accent {
+        margin-top: 7px;
+      }
+
+      .choices {
+        min-height: 260px;
       }
 
       .harradise {
-        padding: 7px 12px;
+        padding-top: 7px;
+        padding-bottom: 7px;
       }
 
       footer {
@@ -303,65 +654,146 @@ h1 .motto {
       }
     }
 
+    /* RESPEKT K NASTAVENÍ OMEZENÉHO POHYBU */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <main class="page">
+  <main class="page" id="nahoru">
 
-    <header>
-    <h1>V POHYBU, <span class="motto">ALE HLAVNĚ V POHODĚ</span></h1>
-      <p>Zažijte dobrodružství, objevte nové zážitky a užijte si to s námi! Rádi vaše děti i vás provedeme cestou pohybu v pohodě.</p>
+    <!-- HORNÍ NAVIGACE -->
+
+    <div class="topbar">
+
+      <a class="brand" href="/" aria-label="V POHYBU - úvodní stránka">
+        <span class="brand-symbol">V</span>
+        <span class="brand-name">V POHYBU</span>
+      </a>
+
+      <nav class="topnav" aria-label="Horní navigace">
+        <a href="#aktivity">Naše aktivity</a>
+        <a class="nav-highlight" href="#harradise">Harradise</a>
+      </nav>
+
+    </div>
+
+    <!-- ÚVOD -->
+
+    <header class="hero">
+
+      <h1>
+        V POHYBU,
+        <span class="motto">ALE HLAVNĚ V POHODĚ</span>
+      </h1>
+
+      <p>
+        Zažijte dobrodružství, objevte nové zážitky a užijte si to s námi! Rádi vaše děti i vás provedeme cestou pohybu v pohodě.
+      </p>
+
+      <span class="hero-accent" aria-hidden="true"></span>
+
     </header>
 
-    <nav class="choices" aria-label="Naše aktivity">
+    <!-- ČTYŘI HLAVNÍ AKTIVITY -->
+
+    <nav class="choices" id="aktivity" aria-label="Naše aktivity">
 
       <a class="choice" href="/tabory/">
         <div class="choice-content">
           <h2>Příměstské tábory</h2>
-          <span>léto · parta · vlastní tempo →</span>
+          <span class="details">
+            léto · parta · vlastní tempo →
+          </span>
         </div>
+        <span class="choice-arrow" aria-hidden="true">→</span>
       </a>
 
       <a class="choice" href="/lyzarska-skola/">
         <div class="choice-content">
           <h2>Lyžařská škola</h2>
-          <span>individuální výuka · skupinky · ski klub →</span>
+          <span class="details">
+            individuální výuka · skupinky · ski klub →
+          </span>
         </div>
+        <span class="choice-arrow" aria-hidden="true">→</span>
       </a>
 
       <a class="choice" href="/akce/">
         <div class="choice-content">
           <h2>Akce a výlety</h2>
-          <span>jednodenní zážitky s full servisem →</span>
+          <span class="details">
+            jednodenní zážitky s full servisem →
+          </span>
         </div>
+        <span class="choice-arrow" aria-hidden="true">→</span>
       </a>
 
       <a class="choice" href="/paddleboardy/">
         <div class="choice-content">
           <h2>Půjčovna paddleboardů</h2>
-          <span>Davle · Svatojánské proudy · Ostrov sv. Kiliána →</span>
+          <span class="details">
+            Davle · Svatojánské proudy · Ostrov sv. Kiliána →
+          </span>
         </div>
+        <span class="choice-arrow" aria-hidden="true">→</span>
       </a>
 
     </nav>
 
-    <a class="harradise"
-       href="https://harradise.cz/"
-       target="_blank"
-       rel="noopener noreferrer">
+    <!-- HARRADISE -->
 
-      <div>
-        <strong>Co takhle vyrazit do Krkonoš? Objevte Harradise.</strong>
-        <small>Náš apartmán v Harrachově, s horami za dveřmi.</small>
+    <a
+      class="harradise"
+      id="harradise"
+      href="https://harradise.cz/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <div class="harradise-main">
+
+        <div class="harradise-image" aria-hidden="true">
+          <svg viewBox="0 0 100 75" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="77" cy="18" r="9" fill="#f2c48d"/>
+            <path d="M0 62 L27 24 L48 49 L64 31 L100 65 L100 75 L0 75 Z"
+                  fill="#85aea7"/>
+            <path d="M15 64 L48 13 L83 67 L83 75 L15 75 Z"
+                  fill="#4d8390"/>
+            <path d="M39 27 L48 13 L58 28 L51 25 L46 31 Z"
+                  fill="#f5f7f2"/>
+            <path d="M0 69 Q35 56 60 70 Q79 58 100 69 L100 75 L0 75 Z"
+                  fill="#d7e8de"/>
+          </svg>
+        </div>
+
+        <div class="harradise-text">
+          <strong>Co takhle vyrazit do Krkonoš? Objevte Harradise.</strong>
+          <small>Náš apartmán v Harrachově, s horami za dveřmi.</small>
+        </div>
+
       </div>
 
-      <span class="action">Harradise.cz →</span>
+      <div class="harradise-action">
+        Harradise.cz <span class="arrow">→</span>
+      </div>
 
     </a>
 
-    <footer>www.vpohybu.fun</footer>
+    <!-- PATIČKA -->
+
+    <footer>
+      www.vpohybu.fun
+    </footer>
 
   </main>
 
