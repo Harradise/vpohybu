@@ -34,20 +34,20 @@
 
       background:
         radial-gradient(
-          ellipse at 4% 4%,
-          rgba(151, 205, 191, 0.27),
-          transparent 43%
+          ellipse at 5% 5%,
+          rgba(249, 209, 171, 0.30),
+          transparent 48%
         ),
         radial-gradient(
-          ellipse at 100% 100%,
-          rgba(240, 190, 137, 0.22),
-          transparent 45%
+          ellipse at 95% 95%,
+          rgba(241, 172, 115, 0.18),
+          transparent 48%
         ),
         linear-gradient(
           135deg,
-          #edf5f1 0%,
-          #f7f8f5 48%,
-          #fcf2e7 100%
+          #fffaf5 0%,
+          #fcf4eb 50%,
+          #f9ede2 100%
         );
     }
 
@@ -88,8 +88,7 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 11px;
-      color: var(--navy);
+      justify-content: center;
       text-decoration: none;
     }
 
@@ -98,22 +97,19 @@
       align-items: center;
       justify-content: center;
 
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       flex-shrink: 0;
 
-      border-radius: 11px;
+      border-radius: 12px;
       background: var(--navy);
-      color: white;
-      font-size: 20px;
-      font-weight: bold;
       box-shadow: 0 4px 12px rgba(23, 58, 84, 0.13);
     }
 
-    .brand-name {
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: 0.065em;
+    .brand-symbol svg {
+      width: 24px;
+      height: 24px;
+      display: block;
     }
 
     .topnav {
@@ -400,9 +396,12 @@
       justify-content: center;
     }
 
-    .harradise-image svg {
+    .harradise-image img {
       width: 100%;
       height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
     }
 
     .harradise-text strong {
@@ -491,10 +490,6 @@
 
       .brand {
         gap: 7px;
-      }
-
-      .brand-name {
-        font-size: 12px;
       }
 
       .topnav {
@@ -676,8 +671,18 @@
     <div class="topbar">
 
       <a class="brand" href="/" aria-label="V POHYBU - úvodní stránka">
-        <span class="brand-symbol">V</span>
-        <span class="brand-name">V POHYBU</span>
+        <span class="brand-symbol" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M6 18C6 14 10 14 10 10C10 7.5 8.5 6.5 7 6M10 10C10 13 14 13 14 9C14 6 12 5 10.5 4.5M14 9C14 12 18 12 18 8"
+              stroke="#F5F7F6"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle cx="18.5" cy="8" r="2.1" fill="#ED8C3A"/>
+          </svg>
+        </span>
       </a>
 
       <nav class="topnav" aria-label="Horní navigace">
@@ -762,18 +767,12 @@
 
       <div class="harradise-main">
 
-        <div class="harradise-image" aria-hidden="true">
-          <svg viewBox="0 0 100 75" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="77" cy="18" r="9" fill="#f2c48d"/>
-            <path d="M0 62 L27 24 L48 49 L64 31 L100 65 L100 75 L0 75 Z"
-                  fill="#85aea7"/>
-            <path d="M15 64 L48 13 L83 67 L83 75 L15 75 Z"
-                  fill="#4d8390"/>
-            <path d="M39 27 L48 13 L58 28 L51 25 L46 31 Z"
-                  fill="#f5f7f2"/>
-            <path d="M0 69 Q35 56 60 70 Q79 58 100 69 L100 75 L0 75 Z"
-                  fill="#d7e8de"/>
-          </svg>
+        <div class="harradise-image">
+          <img
+            src="harradise.jpg"
+            alt="Mumlavský vodopád v Harrachově"
+            loading="lazy"
+          >
         </div>
 
         <div class="harradise-text">
